@@ -13,9 +13,9 @@ provider "azurerm" {
 }
 
 ##########  RESOURCE GROUP   ##########
-resource "azurerm_resource_group" "RG-RNDSXNG" {
-  name     = "RG-RNDSXNG"
-  location = "East US"
+resource "azurerm_resource_group" "RG" {
+  name     = "RG-${var.prefix}"
+  location = var.location
   tags = {
     "app"   = "RND-SXNG"
     "proy"  = "RND-SXNG_AZ-TF"
@@ -23,14 +23,29 @@ resource "azurerm_resource_group" "RG-RNDSXNG" {
   }
 }
 
-##########  APP SERVICE PLAN   ##########
-resource "azurerm_app_service_plan" "APPSP-RNDSXNG" {
-  name                = "APPSP-RNDSXNG"
-  location            = azurerm_resource_group.RG-RNDSXNG.location
-  resource_group_name = azurerm_resource_group.RG-RNDSXNG.name
+##########  SERVICE PLAN   ##########
+resource "azurerm_service_plan" "APPSP" {
+  name                = "APPSP-${var.prefix}"
+  location            = azurerm_resource_group.RG.location
+  resource_group_name = azurerm_resource_group.RG.name
+  os_type             = "Linux"
+  sku_name            = "F1"
+}
 
-  sku {
-    tier = "Free"
-    size = "F1"
+##########  APP LWA   ##########
+resource "azurerm_linux_web_app" "APP" {
+  name                = "APP-${var.prefix}"
+  location            = azurerm_resource_group.RG.location
+  resource_group_name = azurerm_resource_group.RG.name
+  service_plan_id = azurerm_app_service_plan.APPSP.id
+
+  app_settings = {
+    "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
+  }
+  site_config {
+    application_stack {
+      docker_image     = "${var.docker_image}"
+      docker_image_tag = "latest"
+    }
   }
 }
