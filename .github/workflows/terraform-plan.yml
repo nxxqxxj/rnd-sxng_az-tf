@@ -2,7 +2,7 @@ name: Terraform Plan
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ do-not-apply-yet ] #Once in prod change to main branch
 
 jobs:
   terraform:

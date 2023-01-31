@@ -1,3 +1,6 @@
+# Dotenv file
+.env
+
 # Local .terraform directories
 **/.terraform/*
 

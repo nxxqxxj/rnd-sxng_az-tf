@@ -2,7 +2,7 @@ name: Terraform Apply
 
 on:
   push:
-    branches: [ master ]
+    branches: [ do-not-apply-yet ] #Once in prod change to main branch
 
 jobs:
   terraform:
