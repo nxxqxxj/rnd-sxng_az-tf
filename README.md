@@ -1,1 +1,1 @@
-# rnd-sxng_az-tf
+# RND-SXNG with Azure and Terraform.
