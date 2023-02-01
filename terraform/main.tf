@@ -17,8 +17,7 @@ resource "azurerm_resource_group" "RG" {
   name     = "RG-${var.prefix}"
   location = var.location
   tags = {
-    "app"   = "RND-SXNG"
-    "proy"  = "RND-SXNG_AZ-TF"
+    "app"   = "RNDSXNG"
     "by"    = "nxxqxxj"
   }
 }
@@ -30,6 +29,10 @@ resource "azurerm_service_plan" "APPSP" {
   resource_group_name = azurerm_resource_group.RG.name
   os_type             = "Linux"
   sku_name            = "F1"
+  tags = {
+    "app"   = "RNDSXNG"
+    "by"    = "nxxqxxj"
+  }
 }
 
 ##########  APP LWA   ##########
@@ -48,5 +51,9 @@ resource "azurerm_linux_web_app" "APP" {
       docker_image     = "${var.docker_image}"
       docker_image_tag = "latest"
     }
+  }
+  tags = {
+    "app"   = "RNDSXNG"
+    "by"    = "nxxqxxj"
   }
 }
