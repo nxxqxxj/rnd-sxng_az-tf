@@ -43,6 +43,7 @@ resource "azurerm_linux_web_app" "APP" {
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
   }
   site_config {
+    always_on = false
     application_stack {
       docker_image     = "${var.docker_image}"
       docker_image_tag = "latest"
