@@ -8,6 +8,9 @@
 *.tfstate
 *.tfstate.*
 
+# Terraform executable
+terraform.exe
+
 # Crash log files
 crash.log
 
