@@ -2,17 +2,17 @@ name: Terraform Apply
 
 on:
   push:
-    branches: [ do-not-apply-yet ] #Once in prod change to main branch
+    branches: [ main ]
 
 jobs:
   terraform:
     runs-on: ubuntu-latest
 
     env:
-      ARM_CLIENT_ID: <client-id>
-      ARM_CLIENT_SECRET: ${{secrets.TF_ARM_CLIENT_SECRET}}
-      ARM_SUBSCRIPTION_ID: <subscription-id>
-      ARM_TENANT_ID: <tenant-id>
+      ARM_CLIENT_ID: 7afab6b9-d650-4355-afcf-34831824eddc
+      ARM_CLIENT_SECRET: ${{ secrets.TF_ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: a0b32e85-60d6-4ad6-8067-06c26f6b0f6a
+      ARM_TENANT_ID: 4124c0dc-2be8-4460-bc50-6b9c2a93b882
 
     steps:
       - uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
 
       - name: Terraform Init
-        run: terraform init
+        run: cd terraform/ && terraform init
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: cd terraform/ && terraform apply -auto-approve
