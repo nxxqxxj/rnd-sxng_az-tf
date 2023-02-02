@@ -2,7 +2,7 @@ name: Terraform Apply
 
 on:
   push:
-    branches: [ main ] #Once in prod change to main branch
+    branches: [ main ]
 
 jobs:
   terraform:
@@ -21,7 +21,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
 
       - name: Terraform Init
-        run: terraform init
+        run: cd terraform/ && terraform init
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: cd terraform/ && terraform apply -auto-approve
