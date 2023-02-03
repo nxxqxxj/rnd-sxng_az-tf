@@ -25,7 +25,7 @@ jobs:
         run: cd terraform/ && terraform init
 
       - name: Terraform Plan
-        run: cd terraform/ && terraform plan
+        run: cd terraform/ && terraform plan -var="docker_image_tag=${{ steps.meta.outputs.tags }}"
   
   docker:
     name: Push Docker image to Docker Hub
