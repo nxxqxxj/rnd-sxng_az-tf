@@ -25,7 +25,7 @@ jobs:
         run: cd terraform/ && terraform init
 
       - name: Terraform Plan
-        run: cd terraform/ && terraform plan
+        run: cd terraform/ && terraform plan -var="client_id=${{ secrets.SPOTIFY_CLIENT_ID }}" -var="client_secret=${{ secrets.SPOTIFY_CLIENT_SECRET }}"
   
   docker:
     name: Push Docker image to Docker Hub
