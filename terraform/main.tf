@@ -49,7 +49,7 @@ resource "azurerm_linux_web_app" "APP" {
     always_on = false
     application_stack {
       docker_image     = "${var.docker_image}"
-      docker_image_tag = "${var.docker_image_tag}"
+      docker_image_tag = "latest"
     }
   }
   tags = {
