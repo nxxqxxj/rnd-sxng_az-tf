@@ -52,5 +52,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: nxxqxxj/rnd-sxng:latest
           labels: ${{ steps.meta.outputs.labels }}
