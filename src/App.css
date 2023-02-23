@@ -1,38 +1,112 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap");
+
+* {
+  font-family: "Poppins" !important;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+body, html {
+  align-items: center;
   text-align: center;
+  background-position: center center;
+  backdrop-filter: blur(100px);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  user-select: none;
+}
+
+h1 {
+  margin: 7vh !important;
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
   color: white;
+  user-select: none;
 }
 
-.App-link {
-  color: #61dafb;
+h6 {
+  color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a {
+  text-decoration: none !important;
+}
+
+iframe {
+  flex-grow: 1; 
+  border: none; 
+  margin: 0; 
+  padding: 0;
+  user-select: none;
+}
+
+.main-btn {
+  margin: 7vh;
+  margin-bottom: 3vh;
+  width: 265px;
+  height: 55px;
+  border-radius: 50px;
+  background-color: #1db954;
+  color: black;
+  font-size: 1.4rem;
+  font-weight: 800 !important;
+  line-height: 50px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 0px 10px 0px #000000;
+}
+
+.main-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 10px 2px #1db954;
+}
+
+.previous-btn {
+  margin-bottom: 3vh;
+  width: 50px;
+  height: 35px;
+  margin-right: 5px;
+  border-radius: 25px;
+  background-color: black;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 25px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 0px #000000;
+}
+
+.previous-btn:hover {
+  transform: scale(1.2);
+  box-shadow: 0px 0px 5px 1px black;
+}
+
+.second-btn {
+  margin-bottom: 3vh;
+  width: 130px;
+  height: 35px;
+  margin-left: 5px;
+  border-radius: 25px;
+  background-color: black;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 25px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 0px #000000;
+}
+
+.second-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 5px 1px black;
 }
