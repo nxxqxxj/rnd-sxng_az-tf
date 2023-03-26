@@ -1,3 +1,5 @@
+import { setSongFrame, setBackground } from "./setItmes.js";
+
 const GEN_LIST = [
   "acoustic",
   "afrobeat",
@@ -125,7 +127,6 @@ const GEN_LIST = [
   "work-out",
   "world-music",
 ];
-
 var req = {
   genres: GEN_LIST,
   genre: null,
@@ -135,7 +136,6 @@ var req = {
   mrkt: "ES",
   song: null,
 };
-
 var rndSong = {
   name: null,
   id: null,
@@ -145,7 +145,7 @@ var rndSong = {
   url: null,
 };
 
-export async function getRNDSong() {
+async function randomSong() {
   req.genre = Math.floor(Math.random() * (127 - 0)) + 0; //1 genero random entre los 127 que hay actualmente en Spotify
   req.year =
     Math.floor(Math.random() * (new Date().getFullYear() + 1 - 1950)) + 1950; //año random entre 1950 y actual
@@ -176,7 +176,7 @@ export async function getRNDSong() {
     var data = await search.json();
     if (data.tracks.items.length === 0) {
       //si el length de items es 0 significa que logró hacer la apicall pero con los datos randoms asignados no hay resultados
-      getRNDSong(); //ejecuta nuevamente con nuevos datos random
+      randomSong(); //ejecuta nuevamente con nuevos datos random
     } else {
       rndSong.name = data.tracks.items[req.song].name;
       rndSong.id = data.tracks.items[req.song].id;
@@ -205,21 +205,15 @@ export async function getRNDSong() {
       setBackground();
       setSongFrame();
     }
-  } else if (search.status === 401 || search.status === 404) getRNDSong();
+  } else if (search.status === 401 || search.status === 404) randomSong();
   else
     window.alert(search.status + " - Something went wrong, try again later.");
+
+  if (
+    localStorage.getItem("previous_id_song") != null &&
+    localStorage.getItem("previous_background") != null
+  )
+    document.getElementById("btnprevioussong").hidden = false;
 }
 
-export function setBackground() {
-  document.body.style.backgroundImage =
-    "url(" + localStorage.getItem("current_background") + ")";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundSize = "cover";
-}
-
-export function setSongFrame() {
-  var link = "https://open.spotify.com/embed?uri=spotify:track:";
-  document
-    .querySelector("#reproductor")
-    .setAttribute("src", link + localStorage.getItem("current_id_song"));
-}
+export default randomSong;
