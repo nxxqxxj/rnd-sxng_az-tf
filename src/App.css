@@ -7,10 +7,11 @@
   transition: all 0.3s ease;
 }
 
-body, html {
+body {
   align-items: center;
   text-align: center;
   background-position: center center;
+  background-color: #000000 !important;
   backdrop-filter: blur(100px);
 }
 
