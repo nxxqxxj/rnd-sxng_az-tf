@@ -36,6 +36,7 @@ override.tf.json
 /build
 
 # Misc
+.env
 .DS_Store
 .env.local
 .env.development.local

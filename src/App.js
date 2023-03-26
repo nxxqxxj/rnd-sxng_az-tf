@@ -1,25 +1,36 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
+import React, { useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import clientAuth from "../src/components/clientAuth.js";
+import randomSong from "../src/components/randomSong.js";
+import { setBackground, setSongFrame } from "../src/components/setItmes.js";
 
 function App() {
-  document.body.style.backgroundImage =
-    "url(https://i.scdn.co/image/ab67616d0000b273d5ce51ee5b501fed52852a44)";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundSize = "cover";
+  useEffect(() => {
+    loadCurrentSong();
+    loadToken();
+    enablePreviusSong();
+  }, []);
   return (
     <div className="container">
       <h1>RND SXNG</h1>
       <iframe
         id="reproductor"
-        src="https://open.spotify.com/embed?uri=spotify:track:49pWgSwj8XTlUledbsx0O0"
         frameborder="0"
         allowtransparency="true"
         allow="encrypted-media"
       ></iframe>
-      <button className="main-btn"> GET A SONG </button>
+      <button className="main-btn" onClick={randomSong}>
+        GET A SONG
+      </button>
       <div>
-        <button id="btnprevioussong" class="previous-btn">
+        <button
+          id="btnprevioussong"
+          class="previous-btn"
+          hidden="true"
+          onClick={setPreviousSong}
+        >
           ↩
         </button>
         <button id="btnuseraccess" class="second-btn">
@@ -41,3 +52,51 @@ function App() {
 }
 
 export default App;
+
+function loadCurrentSong() {
+  if (
+    localStorage.getItem("current_id_song") != null &&
+    localStorage.getItem("current_background") != null
+  ) {
+    setBackground();
+    setSongFrame();
+  }
+}
+
+function loadToken() {
+  if (
+    (localStorage.getItem("token_requested") != null &&
+      (Date.now() - parseInt(localStorage.getItem("token_requested"))) / 1000 >
+        3600) ||
+    localStorage.getItem("access_token") == null
+  ) {
+    clientAuth();
+  }
+}
+
+function enablePreviusSong() {
+  if (
+    localStorage.getItem("previous_id_song") != null &&
+    localStorage.getItem("previous_background") != null
+  )
+    document.getElementById("btnprevioussong").hidden = false;
+}
+
+function setPreviousSong() {
+  var auxSongId = localStorage.getItem("previous_id_song");
+  var auxBackground = localStorage.getItem("previous_background");
+
+  localStorage.setItem(
+    "previous_id_song",
+    localStorage.getItem("current_id_song")
+  );
+  localStorage.setItem("current_id_song", auxSongId);
+  localStorage.setItem(
+    "previous_background",
+    localStorage.getItem("current_background")
+  );
+  localStorage.setItem("current_background", auxBackground);
+
+  setSongFrame();
+  setBackground();
+}

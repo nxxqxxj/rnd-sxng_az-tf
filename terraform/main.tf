@@ -44,8 +44,8 @@ resource "azurerm_linux_web_app" "APP" {
 
   app_settings = {
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
-    "CLIENT_ID" = "${var.client_id}"
-    "CLIENT_SECRET" = "${var.client_secret}"
+    "REACT_APP_CLIENT_ID" = "${var.client_id}"
+    "REACT_APP_CLIENT_SECRET" = "${var.client_secret}"
   }
   site_config {
     always_on = false
