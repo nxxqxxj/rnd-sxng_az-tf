@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { getToken } from "../src/components/clientAuth.js";
+import clientAuth from "../src/components/clientAuth.js";
 import randomSong from "../src/components/randomSong.js";
 import { setBackground, setSongFrame } from "../src/components/setItmes.js";
 
@@ -70,7 +70,7 @@ function loadToken() {
         3600) ||
     localStorage.getItem("access_token") == null
   ) {
-    getToken();
+    clientAuth();
   }
 }
 

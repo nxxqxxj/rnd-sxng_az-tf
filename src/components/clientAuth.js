@@ -2,7 +2,7 @@ const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
 const URL_API_TOKEN = "https://accounts.spotify.com/api/token";
 
-export async function getToken() {
+async function clientAuth() {
   const token = await fetch(URL_API_TOKEN, {
     method: "POST",
     headers: {
@@ -18,3 +18,5 @@ export async function getToken() {
   var requested = Date.now().toString();
   localStorage.setItem("token_requested", requested);
 }
+
+export default clientAuth;
