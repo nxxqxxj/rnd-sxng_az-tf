@@ -1,4 +1,5 @@
 import { setSongFrame, setBackground } from "./setItmes.js";
+import clientAuth from "./clientAuth.js";
 
 const GEN_LIST = [
   "acoustic",
@@ -146,6 +147,15 @@ var rndSong = {
 };
 
 async function randomSong() {
+  if (
+    (localStorage.getItem("token_requested") != null &&
+      (Date.now() - parseInt(localStorage.getItem("token_requested"))) / 1000 >
+        3600) ||
+    localStorage.getItem("access_token") == null
+  ) {
+    clientAuth();
+  }
+
   req.genre = Math.floor(Math.random() * (127 - 0)) + 0; //1 genero random entre los 127 que hay actualmente en Spotify
   req.year =
     Math.floor(Math.random() * (new Date().getFullYear() + 1 - 1950)) + 1950; //año random entre 1950 y actual

@@ -8,4 +8,5 @@ README.md
 node_modules
 builddock
 
+# Enviroment vars
 .env
