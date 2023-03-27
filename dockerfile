@@ -7,6 +7,5 @@ RUN npm ci && \
     find /app/node_modules/ ! -user root | xargs chown root:root
 RUN npm run build
 # ==== RUN =======
-ENV NODE_ENV production
 EXPOSE 3000
-CMD [ "npx", "serve", "build" ]
+CMD ["npm", "start"]
