@@ -1,10 +1,16 @@
 ##########  PROVIDER DECLARATION   ##########
 terraform {
-required_providers {
+  required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = "=3.0.0"
     }
+  }
+  backend "azurerm" {
+    resource_group_name  = "RG-TFRNDSXNG"
+    storage_account_name = "rndsxngtfstate"
+    container_name       = "terraformtfstate"
+    key                  = "terraform.tfstate"
   }
 }
 
