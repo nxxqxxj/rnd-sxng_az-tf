@@ -1,1 +1,1 @@
-# RND-SXNG with Azure and Terraform.
+# Dockerized RND-SXNG with Azure, Terraform and GitHub Actions.
