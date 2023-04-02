@@ -65,11 +65,6 @@ iframe {
   box-shadow: 0px 0px 10px 0px #000000;
 }
 
-.main-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 0px 10px 2px #1db954;
-}
-
 .previous-btn {
   margin-bottom: 3vh;
   width: 50px;
@@ -84,11 +79,6 @@ iframe {
   border: none;
   cursor: pointer;
   box-shadow: 0px 0px 10px 0px #000000;
-}
-
-.previous-btn:hover {
-  transform: scale(1.2);
-  box-shadow: 0px 0px 5px 1px black;
 }
 
 .second-btn {
@@ -107,7 +97,40 @@ iframe {
   box-shadow: 0px 0px 10px 0px #000000;
 }
 
-.second-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 0px 5px 1px black;
+
+
+/* styles for phone screens */
+@media only screen and (max-width: 768px) {
+  .main-btn:active {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 2px #1db954;
+  }
+  
+  .previous-btn:active {
+    transform: scale(1.2);
+    box-shadow: 0px 0px 5px 1px black;
+  }
+
+  .second-btn:active {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 5px 1px black;
+  }
+}
+
+/* styles for desktop screens */
+@media only screen and (min-width: 769px) {
+  .main-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 2px #1db954;
+  }
+
+  .previous-btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0px 0px 5px 1px black;
+  }
+
+  .second-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 5px 1px black;
+  }
 }

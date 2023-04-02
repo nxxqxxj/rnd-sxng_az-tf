@@ -1,5 +1,5 @@
 import { setSongFrame, setBackground } from "./setItmes.js";
-import clientAuth from "./clientAuth.js";
+import { clientAuth } from "./spotifyAuth.js";
 
 const GEN_LIST = [
   "acoustic",

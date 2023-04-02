@@ -2,15 +2,27 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import clientAuth from "../src/components/clientAuth.js";
+import {
+  clientAuth,
+  getUserAuth,
+  userAuth,
+} from "../src/components/spotifyAuth";
 import randomSong from "../src/components/randomSong.js";
-import { setBackground, setSongFrame } from "../src/components/setItmes.js";
+import managePlaylist from "../src/components/managePlaylist.js";
+import {
+  setBackground,
+  setSongFrame,
+  setPreviousSong,
+  enableAddToPlaylist,
+} from "../src/components/setItmes.js";
 
 function App() {
   useEffect(() => {
     loadCurrentSong();
-    loadToken();
+    requestToken();
     enablePreviusSong();
+    userAuth();
+    enableAddToPlaylist();
   }, []);
   return (
     <div className="container">
@@ -33,10 +45,15 @@ function App() {
         >
           ↩
         </button>
-        <button id="btnuseraccess" class="second-btn">
+        <button id="btnuseraccess" class="second-btn" onClick={getUserAuth}>
           GRANT PERMISSIONS
         </button>
-        <button id="btnaddtoplaylist" class="second-btn" hidden>
+        <button
+          id="btnaddtoplaylist"
+          class="second-btn"
+          hidden
+          onClick={managePlaylist}
+        >
           ADD TO PLAYLIST
         </button>
       </div>
@@ -63,7 +80,7 @@ function loadCurrentSong() {
   }
 }
 
-function loadToken() {
+function requestToken() {
   if (
     (localStorage.getItem("token_requested") != null &&
       (Date.now() - parseInt(localStorage.getItem("token_requested"))) / 1000 >
@@ -80,23 +97,4 @@ function enablePreviusSong() {
     localStorage.getItem("previous_background") != null
   )
     document.getElementById("btnprevioussong").hidden = false;
-}
-
-function setPreviousSong() {
-  var auxSongId = localStorage.getItem("previous_id_song");
-  var auxBackground = localStorage.getItem("previous_background");
-
-  localStorage.setItem(
-    "previous_id_song",
-    localStorage.getItem("current_id_song")
-  );
-  localStorage.setItem("current_id_song", auxSongId);
-  localStorage.setItem(
-    "previous_background",
-    localStorage.getItem("current_background")
-  );
-  localStorage.setItem("current_background", auxBackground);
-
-  setSongFrame();
-  setBackground();
 }

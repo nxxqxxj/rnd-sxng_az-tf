@@ -46,12 +46,12 @@ resource "azurerm_linux_web_app" "APP" {
   name                = "APP-${var.prefix}"
   location            = azurerm_resource_group.RG.location
   resource_group_name = azurerm_resource_group.RG.name
-  service_plan_id = azurerm_service_plan.APPSP.id
+  service_plan_id     = azurerm_service_plan.APPSP.id
 
   app_settings = {
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
-    "REACT_APP_CLIENT_ID" = "${var.client_id}"
-    "REACT_APP_CLIENT_SECRET" = "${var.client_secret}"
+    "REACT_APP_CLIENT_ID"                 = "${var.client_id}"
+    "REACT_APP_CLIENT_SECRET"             = "${var.client_secret}"
   }
   site_config {
     always_on = false
