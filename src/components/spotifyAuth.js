@@ -68,10 +68,12 @@ export async function userAuth() {
       });
       var datos = await userToken.json();
 
-      localStorage.setItem("user_access_token", datos.access_token);
-      localStorage.setItem("user_refresh_token", datos.refresh_token);
-      var requested = Date.now().toString();
-      localStorage.setItem("user_token_requested", requested);
+      if (localStorage.getItem("user_access_token") == null) {
+        localStorage.setItem("user_access_token", datos.access_token);
+        localStorage.setItem("user_refresh_token", datos.refresh_token);
+        var requested = Date.now().toString();
+        localStorage.setItem("user_token_requested", requested);
+      }
 
       window.location.href = REDIRECT_URI;
     }
