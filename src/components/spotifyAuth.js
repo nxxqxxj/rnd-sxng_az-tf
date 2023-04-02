@@ -81,7 +81,10 @@ export async function userAuth() {
 function getCode() {
   let code = null;
   const queryString = window.location.search;
-  if (queryString.length > 0) {
+  if (
+    queryString.length > 0 &&
+    localStorage.getItem("user_access_token") == null
+  ) {
     const urlParams = new URLSearchParams(window.location.search);
     code = urlParams.get("code");
   }
