@@ -1,13 +1,14 @@
-const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
-const TOKEN_EXPIRATION = 3600;
-const GET_PLAYLIST_URL =
-  "https://api.spotify.com/v1/me/playlists?limit=50&offset=0";
-const GET_USER_INFO_URL = "https://api.spotify.com/v1/me";
-const ADD_PUBLIC_PLAYLIST = "https://api.spotify.com/v1/users/";
-const ADD_ITEM_TO_PLAYLIST = "https://api.spotify.com/v1/playlists/";
-const URL_API_TOKEN = "https://accounts.spotify.com/api/token";
-const SONG_URI = "spotify:track:";
+import {
+  CLIENT_ID,
+  CLIENT_SECRET,
+  TOKEN_EXPIRATION,
+  GET_PLAYLIST_URL,
+  GET_USER_INFO_URL,
+  ADD_PUBLIC_PLAYLIST,
+  ADD_ITEM_TO_PLAYLIST,
+  URL_API_TOKEN,
+  SONG_URI,
+} from "./config.js";
 
 var allPlaylists = [];
 

@@ -1,13 +1,12 @@
-const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
-const TOKEN_EXPIRATION = 3600;
-//const REDIRECT_URI = "https://app-rndsxng.azurewebsites.net/"; //prod
-const REDIRECT_URI = "http://localhost:3000/"; //dev
-const URL_API_TOKEN = "https://accounts.spotify.com/api/token";
-
-const SCOPE =
-  "playlist-modify-private playlist-modify-public user-read-private";
-const AUTHORIZATION_URL = "https://accounts.spotify.com/authorize?";
+import {
+  CLIENT_ID,
+  CLIENT_SECRET,
+  TOKEN_EXPIRATION,
+  REDIRECT_URI,
+  URL_API_TOKEN,
+  SCOPE,
+  AUTHORIZATION_URL,
+} from "./config.js";
 
 // CLIENT AUTHENTICATION
 export async function clientAuth() {
