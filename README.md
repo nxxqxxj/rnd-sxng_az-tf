@@ -1,8 +1,8 @@
 # RND-SXNG by nxxqxxj
 
-Go check it out and find a [RND-SXNG](https://rnd-sxng.joaquin7ap.com/)
-
 _RND-SXNG_ is a web application that retrieve a completely random song from the whole Spotify Library. Using Spotify API with just a click you will be able to discover new music and enjoy the surprise of listening to a song they may have never come across otherwise.
+
+Go check it out and find a [RND-SXNG](https://rnd-sxng.joaquin7ap.com/).
 
 <br>
 
