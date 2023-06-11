@@ -45,7 +45,12 @@ function App() {
         >
           ↩
         </button>
-        <button id="btnuseraccess" class="second-btn" onClick={getUserAuth}>
+        <button
+          title="Only for pre-added users."
+          id="btnuseraccess"
+          class="second-btn"
+          onClick={getUserAuth}
+        >
           GRANT PERMISSIONS
         </button>
         <button
