@@ -13,5 +13,5 @@ export const SCOPE =
   "playlist-modify-private playlist-modify-public user-read-private";
 export const AUTHORIZATION_URL = "https://accounts.spotify.com/authorize?";
 
-export const REDIRECT_URI = "https://app-rndsxng.azurewebsites.net/"; //prod
+export const REDIRECT_URI = "https://rnd-sxng.joaquin7ap.com/"; //prod
 //export const REDIRECT_URI = "http://localhost:3000/"; //dev
