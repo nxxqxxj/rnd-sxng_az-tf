@@ -2,7 +2,7 @@ name: Terraform Apply
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   terraform:
@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      ARM_CLIENT_ID: 7afab6b9-d650-4355-afcf-34831824eddc
+      ARM_CLIENT_ID: ${{ secrets.TF_ARM_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.TF_ARM_CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID: a0b32e85-60d6-4ad6-8067-06c26f6b0f6a
-      ARM_TENANT_ID: 4124c0dc-2be8-4460-bc50-6b9c2a93b882
+      ARM_SUBSCRIPTION_ID: ${{ secrets.TF_ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.TF_ARM_TENANT_ID }}
       ARM_ACCESS_KEY: ${{ secrets.TF_ARM_ACCESS_KEY }}
 
     steps:
