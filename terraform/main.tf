@@ -55,8 +55,7 @@ resource "azurerm_linux_web_app" "APP" {
   }
   site_config {
     application_stack {
-      docker_image     = "${var.docker_image}"
-      docker_image_tag = "latest"
+      docker_image_name     = "${var.docker_image}:latest"
     }
   }
   tags = {
