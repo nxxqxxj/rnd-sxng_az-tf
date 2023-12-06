@@ -3,7 +3,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.83.0"
+      version = "=3.0.0"
     }
   }
   backend "azurerm" {
@@ -55,8 +55,8 @@ resource "azurerm_linux_web_app" "APP" {
   }
   site_config {
     application_stack {
-      docker_image_name   = "nxxqxxj/rnd-sxng:latest"
-      docker_registry_url = "https://registry.hub.docker.com/v2/"
+      docker_image     = "${var.docker_image}}"
+      docker_image_tag = "latest"
     }
   }
   tags = {
