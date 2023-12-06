@@ -55,7 +55,8 @@ resource "azurerm_linux_web_app" "APP" {
   }
   site_config {
     application_stack {
-      docker_image_name = "${var.docker_image}:latest"
+      docker_image_name   = "nxxqxxj/rnd-sxng:latest"
+      docker_registry_url = "https://registry.hub.docker.com/v2/"
     }
   }
   tags = {
