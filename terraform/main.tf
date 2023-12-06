@@ -8,7 +8,7 @@ terraform {
   }
   backend "azurerm" {
     resource_group_name  = "RG-TFRNDSXNG"
-    storage_account_name = "rndsxngtfstate"
+    storage_account_name = "tfrndsxng"
     container_name       = "terraformtfstate"
     key                  = "terraform.tfstate"
   }
@@ -23,8 +23,8 @@ resource "azurerm_resource_group" "RG" {
   name     = "RG-${var.prefix}"
   location = var.location
   tags = {
-    "app"   = "RNDSXNG"
-    "by"    = "nxxqxxj"
+    "app" = "RNDSXNG"
+    "by"  = "nxxqxxj"
   }
 }
 
@@ -36,8 +36,8 @@ resource "azurerm_service_plan" "APPSP" {
   os_type             = "Linux"
   sku_name            = "B1"
   tags = {
-    "app"   = "RNDSXNG"
-    "by"    = "nxxqxxj"
+    "app" = "RNDSXNG"
+    "by"  = "nxxqxxj"
   }
 }
 
@@ -55,11 +55,11 @@ resource "azurerm_linux_web_app" "APP" {
   }
   site_config {
     application_stack {
-      docker_image_name     = "${var.docker_image}:latest"
+      docker_image_name = "${var.docker_image}:latest"
     }
   }
   tags = {
-    "app"   = "RNDSXNG"
-    "by"    = "nxxqxxj"
+    "app" = "RNDSXNG"
+    "by"  = "nxxqxxj"
   }
 }
