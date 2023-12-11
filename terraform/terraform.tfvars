@@ -1,3 +1,3 @@
-prefix = "RNDSXNG"
-location = "East US"
+prefix       = "RND-SXNG"
+location     = "East US"
 docker_image = "nxxqxxj/rnd-sxng"
