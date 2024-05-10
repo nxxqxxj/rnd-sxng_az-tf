@@ -134,7 +134,7 @@ function setSongInPlaylist() {
       Authorization: "Bearer " + localStorage.getItem("user_access_token"),
     },
   }).then((response) => {
-    if (response.status === 201) window.confirm("Song added.");
+    if (response.status === 200) window.confirm("Song added.");
     else window.alert("Something went wrong, try again later.");
   });
 }
