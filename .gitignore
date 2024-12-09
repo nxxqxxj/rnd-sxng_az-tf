@@ -8,6 +8,8 @@
 # Terraform executable
 terraform.exe
 
+# Terraform lock
+**/.terraform.lock.hcl
 # Crash log files
 crash.log
 
